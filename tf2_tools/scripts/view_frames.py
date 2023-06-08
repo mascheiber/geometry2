@@ -105,12 +105,13 @@ def check_file(file):
         file = file[:-4] # remove format, will be added seperatly
     
     # check if path to file exists
-    fparts = file.split('/')
-    path = '/'.join(fparts[:-1])
-    if not os.path.exists(path):
-        print('%s does not exist, creating it' % path)
-        os.makedirs(path)
-    
+    if '/' in file:
+        fparts = file.split('/')
+        path = '/'.join(fparts[:-1])
+        if not os.path.exists(path):
+            print('%s does not exist, creating it' % path)
+            os.makedirs(path)
+        
     return file
 
 def positive_float(x):
